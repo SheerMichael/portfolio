@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>My Portfolio</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="sidebar">
+          <div class="sidebar-icon active" data-section="home">🏠</div>
+          <div class="sidebar-icon" data-section="academics">📚</div>
+          <div class="sidebar-icon" data-section="projects">💻</div>
+          <div class="sidebar-icon" data-section="experience">💼</div>
+        </div>
+        <div class="content">
+          <div class="tabs">
+            <div class="tab active" data-section="home">Home</div>
+            <div class="tab" data-section="academics">Academics</div>
+            <div class="tab" data-section="projects">Projects</div>
+            <div class="tab" data-section="experience">Experience</div>
+          </div>
+          <div class="main-content">
+            <div id="home" class="section active">
+              <h1>Im Sheer, turning ideas </br> into websites.</h1>
+              <a href="#" class="btn btn-call">Contact Me</a>
+              <a href="#" class="btn btn-template">Get Pricing</a>
+                <div>
+                    <h2>About me</h2>
+                    <p>I am a full stack developer with experience in building web applications from front-end interfaces to back-end systems. I enjoy turning ideas into,<br> user-friendly solutions, focusing on clean code and practical design. I am always looking to learn new technologies and improve my skills while delivering <br>reliable and efficient results.</p>
+                </div>
+                <img src="photos\guts.jpg">
+            </div>
+            <div id="academics" class="section">
+              <h2>Academic Background</h2>
+              <p>
+                Details about my education, degrees, and academic accomplishments.
+               </p>
+               <img src="photos/cert.png">
+            </div>
+            <div id="projects" class="section">
+                <h1>ERROR 404</h1>
+                <p>The page your looking for doesnt exist or an other error occured.</p>
+            </div>
+            <div id="experience" class="section">
+              <h1>ERROR 404</h1>
+              <p>The page your looking for doesnt exist or an other error occured.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <script>
+      // Handle sidebar icon clicks
+      const sidebarIcons = document.querySelectorAll(".sidebar-icon");
+      sidebarIcons.forEach((icon) => {
+        icon.addEventListener("click", () => {
+          // Remove active class from all icons
+          sidebarIcons.forEach((i) => i.classList.remove("active"));
+          // Add active class to clicked icon
+          icon.classList.add("active");
+
+          // Switch to corresponding section
+          switchToSection(icon.dataset.section);
+        });
+      });
+
+      // Handle tab clicks
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Remove active class from all tabs
+          tabs.forEach((t) => t.classList.remove("active"));
+          // Add active class to clicked tab
+          tab.classList.add("active");
+
+          // Switch to corresponding section
+          switchToSection(tab.dataset.section);
+        });
+      });
+
+      // Function to switch sections
+      function switchToSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => section.classList.remove("active"));
+
+        // Show selected section
+        const selectedSection = document.getElementById(sectionId);
+        selectedSection.classList.add("active");
+
+        // Update sidebar and tabs to match
+        const activeIcon = document.querySelector(
+          `.sidebar-icon[data-section="${sectionId}"]`
+        );
+        const activeTab = document.querySelector(
+          `.tab[data-section="${sectionId}"]`
+        );
+
+        // Reset all icons and tabs
+        sidebarIcons.forEach((icon) => icon.classList.remove("active"));
+        tabs.forEach((tab) => tab.classList.remove("active"));
+
+        // Add active state to corresponding icon and tab
+        activeIcon.classList.add("active");
+        activeTab.classList.add("active");
+      }
+    </script>
+  </body>
+</html>
